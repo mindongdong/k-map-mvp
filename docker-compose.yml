@@ -1,0 +1,68 @@
+# Docker Compose 개발환경 설정
+#
+# 이 파일에서 구성할 서비스:
+# 1. db: PostgreSQL 데이터베이스
+# 2. backend: FastAPI 애플리케이션
+# 3. frontend: React 애플리케이션
+#
+# 각 서비스별 구성 요소:
+# - 포트 매핑
+# - 환경 변수
+# - 볼륨 마운트 (개발용)
+# - 의존성 설정
+# - 헬스체크
+#
+# 예시 구조:
+# services:
+#   db:
+#     image: postgres:15
+#     environment:
+#       POSTGRES_USER: kmap_user
+#       POSTGRES_PASSWORD: kmap_password
+#       POSTGRES_DB: kmap_db
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     healthcheck:
+#       test: ["CMD-SHELL", "pg_isready -U kmap_user -d kmap_db"]
+#       interval: 10s
+#       timeout: 5s
+#       retries: 5
+#
+#   backend:
+#     build: ./backend
+#     ports:
+#       - "8000:8000"
+#     environment:
+#       - POSTGRES_SERVER=db
+#       - POSTGRES_USER=kmap_user
+#       - POSTGRES_PASSWORD=kmap_password
+#       - POSTGRES_DB=kmap_db
+#       - POSTGRES_PORT=5432
+#     volumes:
+#       - ./backend:/app
+#     depends_on:
+#       db:
+#         condition: service_healthy
+#     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+#
+#   frontend:
+#     build: ./frontend
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - REACT_APP_API_URL=http://localhost:8000/api/v1
+#       - CHOKIDAR_USEPOLLING=true
+#     volumes:
+#       - ./frontend:/app
+#       - /app/node_modules
+#     depends_on:
+#       - backend
+#     stdin_open: true
+#     tty: true
+#
+# volumes:
+#   postgres_data:
+
+# TODO: 위 구조를 참고하여 Docker Compose 설정을 작성하세요
