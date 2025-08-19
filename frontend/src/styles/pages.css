@@ -1,0 +1,148 @@
+/* 페이지별 스타일
+ *
+ * 이 파일에서 정의할 페이지 스타일:
+ * 1. 홈페이지 (.home-page, .hero, .features, .quick-access)
+ * 2. 데이터셋 페이지 (.datasets-page, .filters-section, .table-container)
+ * 3. 시각화 페이지 (.visualization-page, .chart-container, .chart-options)
+ * 4. 관리자 페이지 (.admin-page, .login-form, .upload-form)
+ * 5. 공통 페이지 요소 (.page-header, .loading, .error)
+ *
+ * 홈페이지 예시:
+ * .home-page {
+ *   padding: 0;
+ * }
+ *
+ * .hero {
+ *   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ *   color: white;
+ *   padding: 4rem 2rem;
+ *   text-align: center;
+ * }
+ *
+ * .hero h1 {
+ *   font-size: 3rem;
+ *   margin-bottom: 1rem;
+ *   font-weight: 700;
+ * }
+ *
+ * .hero-buttons {
+ *   display: flex;
+ *   gap: 1rem;
+ *   justify-content: center;
+ *   margin-top: 2rem;
+ * }
+ *
+ * .features {
+ *   padding: 4rem 2rem;
+ *   background-color: #f8f9fa;
+ * }
+ *
+ * .features-grid {
+ *   display: grid;
+ *   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ *   gap: 2rem;
+ *   margin-top: 2rem;
+ * }
+ *
+ * .feature-card {
+ *   background: white;
+ *   padding: 2rem;
+ *   border-radius: 8px;
+ *   box-shadow: var(--box-shadow);
+ *   text-align: center;
+ *   transition: var(--transition);
+ * }
+ *
+ * .feature-card:hover {
+ *   transform: translateY(-4px);
+ * }
+ *
+ * 데이터셋 페이지 예시:
+ * .datasets-page {
+ *   max-width: 1200px;
+ *   margin: 0 auto;
+ *   padding: 2rem;
+ * }
+ *
+ * .filters-section {
+ *   background: white;
+ *   padding: 2rem;
+ *   border-radius: 8px;
+ *   box-shadow: var(--box-shadow);
+ *   margin-bottom: 2rem;
+ * }
+ *
+ * .filters-grid {
+ *   display: grid;
+ *   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+ *   gap: 1rem;
+ * }
+ *
+ * .table-container {
+ *   overflow-x: auto;
+ * }
+ *
+ * 시각화 페이지 예시:
+ * .visualization-page {
+ *   max-width: 1400px;
+ *   margin: 0 auto;
+ *   padding: 2rem;
+ * }
+ *
+ * .chart-options {
+ *   display: grid;
+ *   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ *   gap: 1rem;
+ *   margin-bottom: 2rem;
+ * }
+ *
+ * .chart-option {
+ *   background: #f8f9fa;
+ *   border: 2px solid transparent;
+ *   border-radius: 8px;
+ *   padding: 1.5rem;
+ *   cursor: pointer;
+ *   transition: var(--transition);
+ * }
+ *
+ * .chart-option.active {
+ *   border-color: var(--primary-color);
+ *   background: #e3f2fd;
+ * }
+ *
+ * .chart-container {
+ *   width: 100%;
+ *   height: 600px;
+ *   display: flex;
+ *   justify-content: center;
+ *   align-items: center;
+ * }
+ *
+ * 공통 요소 예시:
+ * .page-header {
+ *   text-align: center;
+ *   margin-bottom: 3rem;
+ * }
+ *
+ * .page-header h1 {
+ *   font-size: 2.5rem;
+ *   color: var(--dark-color);
+ *   margin-bottom: 1rem;
+ * }
+ *
+ * .loading, .error {
+ *   text-align: center;
+ *   padding: 3rem;
+ *   font-size: 1.1rem;
+ * }
+ *
+ * .loading {
+ *   color: #6c757d;
+ * }
+ *
+ * .error {
+ *   color: var(--danger-color);
+ * }
+ */
+
+/* TODO: 위 가이드를 참고하여 페이지별 스타일을 정의하세요 */

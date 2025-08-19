@@ -1,0 +1,96 @@
+/* 레이아웃 관련 스타일
+ *
+ * 이 파일에서 정의할 레이아웃 스타일:
+ * 1. 전체 앱 레이아웃 (.App, .main-content)
+ * 2. 헤더 스타일 (.header, .header-content, .logo, .nav)
+ * 3. 푸터 스타일 (.footer, .footer-content, .footer-section)
+ * 4. 컨테이너 스타일 (.container, .container-fluid)
+ * 5. 그리드 시스템 (.row, .col, .col-md-6 등)
+ * 6. 반응형 레이아웃 미디어 쿼리
+ *
+ * 앱 레이아웃 예시:
+ * .App {
+ *   display: flex;
+ *   flex-direction: column;
+ *   min-height: 100vh;
+ * }
+ *
+ * .main-content {
+ *   flex: 1;
+ *   padding: 2rem 0;
+ * }
+ *
+ * 헤더 예시:
+ * .header {
+ *   background-color: #fff;
+ *   border-bottom: 1px solid #e9ecef;
+ *   position: sticky;
+ *   top: 0;
+ *   z-index: 1000;
+ *   box-shadow: var(--box-shadow);
+ * }
+ *
+ * .header-content {
+ *   display: flex;
+ *   justify-content: space-between;
+ *   align-items: center;
+ *   padding: 1rem 0;
+ * }
+ *
+ * .logo {
+ *   text-decoration: none;
+ *   color: inherit;
+ * }
+ *
+ * .logo h1 {
+ *   margin: 0;
+ *   color: var(--primary-color);
+ *   font-size: 1.8rem;
+ *   font-weight: 700;
+ * }
+ *
+ * .nav {
+ *   display: flex;
+ *   gap: 2rem;
+ * }
+ *
+ * .nav-link {
+ *   text-decoration: none;
+ *   color: #495057;
+ *   font-weight: 500;
+ *   padding: 0.5rem 1rem;
+ *   border-radius: var(--border-radius);
+ *   transition: var(--transition);
+ * }
+ *
+ * .nav-link:hover {
+ *   color: var(--primary-color);
+ *   background-color: #f8f9fa;
+ * }
+ *
+ * .nav-link.active {
+ *   color: var(--primary-color);
+ *   background-color: #e3f2fd;
+ * }
+ *
+ * 컨테이너 예시:
+ * .container {
+ *   max-width: 1200px;
+ *   margin: 0 auto;
+ *   padding: 0 1rem;
+ * }
+ *
+ * 반응형 미디어 쿼리 예시:
+ * @media (max-width: 768px) {
+ *   .header-content {
+ *     flex-direction: column;
+ *     gap: 1rem;
+ *   }
+ *   
+ *   .nav {
+ *     gap: 1rem;
+ *   }
+ * }
+ */
+
+/* TODO: 위 가이드를 참고하여 레이아웃 스타일을 정의하세요 */

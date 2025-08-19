@@ -1,0 +1,64 @@
+/* 공통 컴포넌트 스타일
+ *
+ * 이 파일에서 정의할 컴포넌트 스타일:
+ * 1. 버튼 스타일 (.btn, .btn-primary, .btn-secondary, .btn-sm, .btn-lg)
+ * 2. 폼 스타일 (.form-group, .form-label, .form-control, .form-row)
+ * 3. 테이블 스타일 (.table, .table-striped, .table-hover)
+ * 4. 카드 스타일 (.card, .card-header, .card-body, .card-footer)
+ * 5. 네비게이션 스타일 (.nav, .nav-link, .nav-pills, .nav-tabs)
+ * 6. 유틸리티 클래스 (.text-center, .mb-3, .p-4, .d-flex)
+ *
+ * 버튼 예시:
+ * .btn {
+ *   display: inline-block;
+ *   padding: 0.75rem 1.5rem;
+ *   font-size: 1rem;
+ *   font-weight: 500;
+ *   text-align: center;
+ *   text-decoration: none;
+ *   border: 1px solid transparent;
+ *   border-radius: var(--border-radius);
+ *   cursor: pointer;
+ *   transition: var(--transition);
+ * }
+ *
+ * .btn-primary {
+ *   color: #fff;
+ *   background-color: var(--primary-color);
+ *   border-color: var(--primary-color);
+ * }
+ *
+ * .btn-primary:hover {
+ *   background-color: #0056b3;
+ *   border-color: #0056b3;
+ * }
+ *
+ * 폼 예시:
+ * .form-group {
+ *   margin-bottom: 1rem;
+ * }
+ *
+ * .form-label {
+ *   display: block;
+ *   margin-bottom: 0.5rem;
+ *   font-weight: 500;
+ * }
+ *
+ * .form-control {
+ *   display: block;
+ *   width: 100%;
+ *   padding: 0.75rem;
+ *   font-size: 1rem;
+ *   border: 1px solid #ced4da;
+ *   border-radius: var(--border-radius);
+ *   transition: var(--transition);
+ * }
+ *
+ * .form-control:focus {
+ *   outline: none;
+ *   border-color: var(--primary-color);
+ *   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+ * }
+ */
+
+/* TODO: 위 가이드를 참고하여 컴포넌트 스타일을 정의하세요 */
