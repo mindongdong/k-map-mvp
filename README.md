@@ -55,19 +55,19 @@ cp frontend/.env.example frontend/.env
 
 3. **전체 스택 실행**
 ```bash
-docker compose up
+docker compose up -d
 ```
 
 4. **개별 서비스 실행**
 ```bash
 # 프론트엔드만 실행
-docker compose up frontend
+docker compose up -d frontend
 
 # 백엔드만 실행
-docker compose up backend db
+docker compose up -d backend db
 
 # 데이터베이스만 실행
-docker compose up db
+docker compose up -d db
 ```
 
 ### 접속 URL
