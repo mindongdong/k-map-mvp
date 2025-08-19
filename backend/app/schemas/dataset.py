@@ -12,16 +12,16 @@
 # from datetime import datetime
 # from typing import Dict, Optional, Any
 #
-# class DatasetBase(BaseModel):
-#     dataset_id: str
-#     group: str
-#     data_type: str
-#     organ: str
-#     status: str = "active"
-#     description: Optional[str] = None
-#     citation: Optional[str] = None
-#     publication_date: datetime
-#     technical_metadata: Dict[str, Any] = {}
+class DatasetBase(BaseModel):
+    dataset_id: str
+    group: str
+    data_type: str
+    organ: str
+    status: str = "active"
+    description: Optional[str] = None
+    citation: Optional[str] = None
+    publication_date: datetime
+    technical_metadata: Dict[str, Any] = {}
 #
 # class DatasetCreate(DatasetBase):
 #     pass
