@@ -1,16 +1,28 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="K-map API", description="생물학 데이터 포털 API")
+from app.core.config import settings
+from app.api import datasets, admin, visualizations
+
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    description="생물학 데이터 포털 API",
+    version="1.0.0"
+)
 
 # CORS 설정
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=settings.BACKEND_CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# API 라우터 포함
+app.include_router(datasets.router, prefix=f"{settings.API_V1_STR}/datasets", tags=["Datasets"])
+app.include_router(admin.router, prefix=f"{settings.API_V1_STR}/admin", tags=["Admin"])
+app.include_router(visualizations.router, prefix=f"{settings.API_V1_STR}/visualizations", tags=["Visualizations"])
 
 @app.get("/")
 async def root():
@@ -19,18 +31,3 @@ async def root():
 @app.get("/health")
 async def health():
     return {"status": "healthy"}
-
-@app.get("/api/v1/datasets")
-async def get_datasets():
-    return {
-        "datasets": [
-            {
-                "id": "DS001",
-                "group": "Research Group A",
-                "dataType": "RNA-seq",
-                "organ": "Liver",
-                "status": "Published",
-                "publicationDate": "2024-08-01"
-            }
-        ]
-    }

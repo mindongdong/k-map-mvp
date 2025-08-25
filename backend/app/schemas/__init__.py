@@ -1,1 +1,1 @@
-from .dataset import DatasetCreate, DatasetUpdate, DatasetResponse
+from .dataset import DatasetCreate, DatasetUpdate, DatasetSchema
