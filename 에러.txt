@@ -1,0 +1,35 @@
+INFO:     Will watch for changes in these directories: ['/app']
+
+INFO:     Uvicorn running on http://0.0.0.0:8000⁠ (Press CTRL+C to quit)
+
+INFO:     Started reloader process [1] using WatchFiles
+
+INFO:     Will watch for changes in these directories: ['/app']
+
+INFO:     Uvicorn running on http://0.0.0.0:8000⁠ (Press CTRL+C to quit)
+
+INFO:     Started reloader process [1] using WatchFiles
+
+/usr/local/lib/python3.11/site-packages/pydantic/_internal/_config.py:318: UserWarning: Valid config keys have changed in V2:
+
+* 'orm_mode' has been renamed to 'from_attributes'
+
+  warnings.warn(message, UserWarning)
+
+/usr/local/lib/python3.11/site-packages/pydantic/_internal/_config.py:318: UserWarning: Valid config keys have changed in V2:
+
+* 'orm_mode' has been renamed to 'from_attributes'
+
+  warnings.warn(message, UserWarning)
+
+INFO:     Started server process [8]
+
+INFO:     Waiting for application startup.
+
+INFO:     Application startup complete.
+
+INFO:     Started server process [8]
+
+INFO:     Waiting for application startup.
+
+INFO:     Application startup complete.

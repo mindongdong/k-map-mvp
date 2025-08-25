@@ -2,8 +2,8 @@ from fastapi import APIRouter, HTTPException, Body
 from typing import List
 from datetime import datetime, date
 
-from app.schemas.dataset import DatasetCreate, DatasetUpdate, DatasetResponse
-from app.models.mockup import MOCK_DATASETS
+from app.schemas.dataset import DatasetCreate, DatasetUpdate, DatasetSchema
+# from app.models.mockup import MOCK_DATASETS
 
 router = APIRouter()
 
@@ -15,7 +15,7 @@ async def admin_login(username: str = Body(...), password: str = Body(...)):
         return {"message": "Admin login successful", "token": "fake-jwt-token"}
     raise HTTPException(status_code=401, detail="Incorrect username or password")
 
-@router.post("/datasets", response_model=DatasetResponse, status_code=201)
+@router.post("/datasets", response_model=DatasetSchema, status_code=201)
 async def create_dataset(dataset: DatasetCreate):
     """데이터셋 생성 (업로드)"""
     new_dataset = dataset.dict()

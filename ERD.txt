@@ -1,0 +1,24 @@
+erDiagram
+users {
+int user_id PK "Auto-incrementing primary key"
+varchar(255) username UK "Unique username for login"
+varchar(255) hashed_password "Hashed password"
+varchar(50) role "User role (e.g., 'admin')"
+timestamp created_at "Timestamp of creation"
+}
+datasets {
+int dataset_id PK "Auto-incrementing primary key"
+varchar(255) public_dataset_id UK "Publicly visible ID (e.g., HBM642.GNSK.367)"
+int uploader_id FK "Foreign key to users table"
+varchar(255) group_name "Research group name"
+varchar(100) data_type "Type of data (e.g., scRNAseq)"
+varchar(100) organ "Organ of origin (e.g., Skin)"
+varchar(50) status "Dataset status"
+date publication_date "Date of publication"
+text description "Detailed description of the dataset"
+varchar(255) citation "Citation information (e.g., DOI)"
+varchar(255) file_storage_path "Path or URL to the dataset file"
+timestamp created_at "Timestamp of creation"
+timestamp updated_at "Timestamp of last update"
+}
+users ||--o{ datasets : "uploads"
