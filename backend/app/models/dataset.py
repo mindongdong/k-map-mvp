@@ -1,36 +1,26 @@
-from sqlalchemy import Column, Integer, String, Text, Date, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, Text, TIMESTAMP, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.core.database import Base
 
-class User(Base):
-    __tablename__ = "users"
-
-    user_id = Column(Integer, primary_key=True, index=True)
-    username = Column(String(255), unique=True, nullable=False)
-    hashed_password = Column(String(255), nullable=False)
-    role = Column(String(50), nullable=False, default='user')
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-
-    datasets = relationship("Dataset", back_populates="uploader")
-
 class Dataset(Base):
     __tablename__ = "datasets"
-    
-    dataset_id = Column(Integer, primary_key=True, index=True)
+
+    dataset_id = Column(Integer, primary_key=True)
     public_dataset_id = Column(String(255), unique=True, index=True, nullable=False)
-    uploader_id = Column(Integer, ForeignKey("users.user_id"), nullable=False)
-    
-    group_name = Column(String(255), nullable=False)
-    data_type = Column(String(100), nullable=False)
-    organ = Column(String(100), nullable=False)
-    status = Column(String(50), nullable=False, default="private")
+    uploader_id = Column(Integer, ForeignKey("users.user_id"))
+    group_name = Column(String(255))
+    data_type = Column(String(100))
+    organ = Column(String(100))
+    status = Column(String(50))
     publication_date = Column(Date)
     description = Column(Text)
     citation = Column(String(255))
-    file_storage_path = Column(String(255), nullable=False)
-    
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    file_storage_path = Column(String(255))
+    created_at = Column(TIMESTAMP, server_default=func.now())
+    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
 
     uploader = relationship("User", back_populates="datasets")
+
+    def __repr__(self):
+        return f"Dataset(dataset_id={self.dataset_id}, public_dataset_id={self.public_dataset_id})"

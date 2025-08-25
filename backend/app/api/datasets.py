@@ -1,48 +1,68 @@
+
 from fastapi import APIRouter, HTTPException
+from app.schemas.dataset import DatasetListSchema, DatasetSchema
+from datetime import date
 from fastapi.responses import FileResponse
-from typing import List
 import os
 
-from app.schemas.dataset import DatasetResponse
-from app.models.mockup import MOCK_DATASETS
+router = APIRouter(tags=["Datasets"])
 
-router = APIRouter()
+mock_db = [
+    DatasetSchema(
+        dataset_id=1,
+        public_dataset_id="HBM123.ABCD.456",
+        uploader_id=1,
+        group_name="K-map Consortium",
+        data_type="scRNA-seq",
+        organ="Lung",
+        status="Published",
+        publication_date=date(2024, 8, 22),
+        description="A sample dataset for lung tissue.",
+        citation="K-map et al. (2024)",
+        created_at=date(2024, 8, 22),
+        updated_at=date(2024, 8, 22),
+    ),
+    DatasetSchema(
+        dataset_id=2,
+        public_dataset_id="HBM456.EFGH.789",
+        uploader_id=1,
+        group_name="K-map Consortium",
+        data_type="WGS",
+        organ="Blood",
+        status="Published",
+        publication_date=date(2024, 8, 23),
+        description="A sample dataset for blood.",
+        citation="K-map et al. (2024)",
+        created_at=date(2024, 8, 23),
+        updated_at=date(2024, 8, 23),
+    )
+]
 
-@router.get("/", response_model=List[DatasetResponse])
-async def get_datasets():
-    """데이터셋 목록 조회"""
-    return MOCK_DATASETS
+@router.get("", response_model=DatasetListSchema)
+def get_datasets():
+    """
+    임시 데이터셋 목록을 반환합니다.
+    """
+    return DatasetListSchema(datasets=mock_db)
 
-@router.get("/{public_dataset_id}", response_model=DatasetResponse)
-async def get_dataset(public_dataset_id: str):
-    """특정 데이터셋 상세 정보 조회"""
-    for dataset in MOCK_DATASETS:
-        if dataset["public_dataset_id"] == public_dataset_id:
+@router.get("/{dataset_id}", response_model=DatasetSchema)
+def get_dataset_by_id(dataset_id: int):
+    """
+    ID로 특정 데이터셋의 정보를 조회합니다.
+    """
+    for dataset in mock_db:
+        if dataset.dataset_id == dataset_id:
             return dataset
     raise HTTPException(status_code=404, detail="Dataset not found")
 
-@router.get("/{public_dataset_id}/download/{file_name}")
-async def download_file(public_dataset_id: str, file_name: str):
-    """데이터셋 파일 다운로드"""
-    dataset_found = None
-    for dataset in MOCK_DATASETS:
-        if dataset["public_dataset_id"] == public_dataset_id:
-            dataset_found = dataset
-            break
-    
-    if not dataset_found:
-        raise HTTPException(status_code=404, detail="Dataset not found")
-
-    # 실제 파일 경로 확인 (보안상 실제 경로 노출은 주의해야 함)
-    # 여기서는 목업 데이터의 경로를 사용합니다.
-    file_path = dataset_found["file_storage_path"]
-    
-    if os.path.basename(file_path) != file_name:
-        raise HTTPException(status_code=404, detail="File not found in dataset")
-
-    # 실제 파일 시스템에 파일이 존재한다고 가정하고 FileResponse를 반환합니다.
-    # 지금은 목업이므로, 실제 파일이 없으면 에러가 발생합니다.
-    # return FileResponse(path=file_path, filename=file_name)
-    
-    # 임시 목업 응답
-    return {"message": f"Attempting to download {file_name} from {public_dataset_id}", "file_path": file_path}
+@router.get("/{dataset_id}/download/{file_name}")
+def download_dataset_file(dataset_id: int, file_name: str):
+    """
+    특정 데이터셋의 파일을 다운로드합니다. (임시 구현)
+    """
+    # 임시 파일 생성 및 다운로드 로직 (실제 파일 대신 메시지 반환)
+    # file_path = f"temp_{file_name}"
+    # with open(file_path, "w") as f:
+    #     f.write(f"This is a dummy file for dataset {dataset_id}: {file_name}")
+    # return FileResponse(path=file_path, filename=file_name, media_type='application/octet-stream')
+    return {"message": f"Request to download {file_name} for dataset {dataset_id} received.", "status": "mocked"}

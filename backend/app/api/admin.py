@@ -25,7 +25,7 @@ async def create_dataset(dataset: DatasetCreate):
     MOCK_DATASETS.append(new_dataset)
     return new_dataset
 
-@router.put("/datasets/{public_dataset_id}", response_model=DatasetResponse)
+@router.put("/datasets/{public_dataset_id}", response_model=DatasetSchema)
 async def update_dataset(public_dataset_id: str, dataset_update: DatasetUpdate):
     """데이터셋 수정"""
     for i, dataset in enumerate(MOCK_DATASETS):
