@@ -1,35 +1,21 @@
-INFO:     Will watch for changes in these directories: ['/app']
+C:\k-map-mvp>git add .
+warning: in the working copy of 'backend/app/api/admin.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/app/core/config.py', LF will be replaced by CRLF the next time Git touches it
 
-INFO:     Uvicorn running on http://0.0.0.0:8000⁠ (Press CTRL+C to quit)
+C:\k-map-mvp>git commit -m "fix(be): Resolve application startup errors" -m "- Resolve Pydantic ValidationError by defining all environment variables from the .env file in the Settings class." -m "- Fix ImportError and NameError by replacing incorrect `DatasetResponse` references with `DatasetSchema`." -m "- These changes allow the backend server to run successfully via `docker compose up`."
+[feat/be/setup-initial-api 5ae635f] fix(be): Resolve application startup errors
+ 8 files changed, 133 insertions(+), 14 deletions(-)
+ create mode 100644 ERD.png
+ create mode 100644 ERD.txt
+ create mode 100644 mockup.py
+ create mode 100644 "\354\227\220\353\237\254.txt"
 
-INFO:     Started reloader process [1] using WatchFiles
-
-INFO:     Will watch for changes in these directories: ['/app']
-
-INFO:     Uvicorn running on http://0.0.0.0:8000⁠ (Press CTRL+C to quit)
-
-INFO:     Started reloader process [1] using WatchFiles
-
-/usr/local/lib/python3.11/site-packages/pydantic/_internal/_config.py:318: UserWarning: Valid config keys have changed in V2:
-
-* 'orm_mode' has been renamed to 'from_attributes'
-
-  warnings.warn(message, UserWarning)
-
-/usr/local/lib/python3.11/site-packages/pydantic/_internal/_config.py:318: UserWarning: Valid config keys have changed in V2:
-
-* 'orm_mode' has been renamed to 'from_attributes'
-
-  warnings.warn(message, UserWarning)
-
-INFO:     Started server process [8]
-
-INFO:     Waiting for application startup.
-
-INFO:     Application startup complete.
-
-INFO:     Started server process [8]
-
-INFO:     Waiting for application startup.
-
-INFO:     Application startup complete.
+C:\k-map-mvp>git push
+To https://github.com/mindongdong/k-map-mvp
+ ! [rejected]        feat/be/setup-initial-api -> feat/be/setup-initial-api (fetch first)
+error: failed to push some refs to 'https://github.com/mindongdong/k-map-mvp'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
