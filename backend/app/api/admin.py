@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Body
 from typing import List
 from datetime import datetime, date
 
-from app.schemas.dataset import DatasetCreate, DatasetUpdate, DatasetResponse
+from app.schemas.dataset import DatasetCreate, DatasetUpdate, DatasetResponse,DatasetSchema
 from app.models.mockup import MOCK_DATASETS
 
 router = APIRouter()
