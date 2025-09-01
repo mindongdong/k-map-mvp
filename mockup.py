@@ -1,0 +1,46 @@
+from datetime import date, datetime
+
+MOCK_DATASETS = [
+    {
+        "dataset_id": 1,
+        "public_dataset_id": "HBM279.XLNR.335",
+        "group_name": "K-map Consortium",
+        "data_type": "scRNA-seq",
+        "organ": "Heart",
+        "status": "Published",
+        "publication_date": date(2024, 8, 1),
+        "description": "A comprehensive single-cell RNA sequencing dataset of the adult human heart.",
+        "citation": "K-map Consortium et al. (2024) Nature.",
+        "file_storage_path": "/data/HBM279.XLNR.335/processed.h5ad",
+        "created_at": datetime(2024, 7, 1, 10, 0, 0),
+        "updated_at": datetime(2024, 8, 1, 12, 30, 0),
+    },
+    {
+        "dataset_id": 2,
+        "public_dataset_id": "HBM642.GNSK.367",
+        "group_name": "Seoul Bio-Hub",
+        "data_type": "WGS",
+        "organ": "Blood",
+        "status": "Published",
+        "publication_date": date(2023, 11, 15),
+        "description": "Whole genome sequencing data from a cohort of 1,000 Korean individuals.",
+        "citation": "Seoul Bio-Hub et al. (2023) Science.",
+        "file_storage_path": "/data/HBM642.GNSK.367/raw_data.bam",
+        "created_at": datetime(2023, 10, 1, 9, 0, 0),
+        "updated_at": datetime(2023, 11, 15, 11, 0, 0),
+    },
+    {
+        "dataset_id": 3,
+        "public_dataset_id": "HBM987.ABCD.123",
+        "group_name": "K-map Consortium",
+        "data_type": "scATAC-seq",
+        "organ": "Kidney",
+        "status": "Unpublished",
+        "publication_date": None,
+        "description": "Single-cell ATAC sequencing of the human kidney to map chromatin accessibility.",
+        "citation": None,
+        "file_storage_path": "/data/HBM987.ABCD.123/fragments.tsv.gz",
+        "created_at": datetime(2024, 6, 20, 15, 0, 0),
+        "updated_at": datetime(2024, 6, 20, 15, 0, 0),
+    }
+]
