@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-export function useApi<T>(
-  apiCall: () => Promise<T>,
-  dependencies: any[] = []
-) {
+export function useApi<T>(apiCall: () => Promise<T>, dependencies: any[] = []) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +13,7 @@ export function useApi<T>(
         const result = await apiCall();
         setData(result);
       } catch (err) {
-        setError(err instanceof Error ? err.message : '오류가 발생했습니다');
+        setError(err instanceof Error ? err.message : "오류가 발생했습니다");
       } finally {
         setLoading(false);
       }
