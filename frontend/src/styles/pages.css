@@ -145,4 +145,844 @@
  * }
  */
 
-/* TODO: 위 가이드를 참고하여 페이지별 스타일을 정의하세요 */
+/* Figma 정확한 디자인 기반 데이터셋 페이지 */
+.figma-datasets-page {
+  background-color: #ffffff;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 헤더 - 브레드크럼 - Figma 정확한 스타일 */
+.figma-header {
+  padding: 16px 20px;
+  background: white;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.figma-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.breadcrumb-item {
+  color: #666;
+  font-weight: 400;
+}
+
+.breadcrumb-item.current {
+  color: #333;
+  font-weight: 500;
+}
+
+.breadcrumb-separator {
+  color: #999;
+  font-size: 11px;
+}
+
+/* 메인 컨테이너 - Figma 정확한 스타일 */
+.figma-main-container {
+  display: flex;
+  min-height: calc(100vh - 65px);
+  background: white;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* 메인 컨텐츠 영역 */
+.figma-content {
+  flex: 1;
+  background: white;
+  padding: 40px 40px 40px 50px;
+  min-height: calc(100vh - 65px);
+  overflow-y: auto;
+}
+
+/* 사이드바 - Figma 정확한 스타일 */
+.figma-sidebar {
+  width: 450px;
+  min-width: 450px;
+  background: #f5f5f5;
+  border-right: none;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.05);
+  padding: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 65px);
+  position: sticky;
+  top: 0;
+}
+
+/* 사이드바 헤더 */
+.sidebar-header-section {
+  padding: 30px 30px 16px;
+  background: #f5f5f5;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #303030;
+}
+
+.logo-icon {
+  width: 18px;
+  height: 18px;
+  background: #303030;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  font-weight: 700;
+  color: #303030;
+  font-size: 18px;
+}
+
+.breadcrumb-arrow {
+  color: #303030;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.current-page {
+  color: #303030;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* 검색 바 */
+.sidebar-search {
+  padding: 0 30px 20px;
+  background: #f5f5f5;
+  position: relative;
+}
+
+.sidebar-search-input {
+  width: 100%;
+  max-width: 390px;
+  height: 36px;
+  padding: 0 40px 0 14px;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  font-size: 14px;
+  background: white;
+  font-family: 'Pretendard', sans-serif;
+  color: #c0c0c0;
+  box-sizing: border-box;
+}
+
+.sidebar-search-input::placeholder {
+  color: #c0c0c0;
+  font-size: 14px;
+}
+
+.sidebar-search-input:focus {
+  outline: none;
+  border-color: #e3e3e3;
+}
+
+.search-icon {
+  position: absolute;
+  right: 42px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #c0c0c0;
+  pointer-events: none;
+}
+
+/* 필터 섹션들 - Figma 정확한 스타일 */
+.filter-sections {
+  flex: 1;
+  padding: 0 30px;
+}
+
+.filter-section {
+  margin-bottom: 0;
+}
+
+.filter-section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  color: #9a9a9a;
+  text-align: left;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  position: relative;
+}
+
+.filter-section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  right: 0;
+  height: 1px;
+  background: #e3e3e3;
+}
+
+.filter-section-header.active .filter-title {
+  color: #303030;
+}
+
+.filter-section-header.active .filter-icon {
+  background: #9a9a9a;
+}
+
+.filter-section-header.no-border::after {
+  display: none;
+}
+
+.filter-icon {
+  width: 24px;
+  height: 24px;
+  background: #c0c0c0;
+  border-radius: 4px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-title {
+  flex: 1;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.filter-header-content {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.collapse-arrow {
+  width: 11px;
+  height: 18px;
+  color: #9a9a9a;
+  transition: transform 0.2s;
+}
+
+.collapse-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.filter-section-content {
+  padding: 8px 0;
+  background: white;
+}
+
+.filter-checkbox-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px 10px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+  background: white;
+  transition: background 0.15s;
+}
+
+.filter-checkbox-item:hover {
+  background: #f8f8f8;
+}
+
+.filter-checkbox-item input[type="checkbox"] {
+  margin: 0;
+  margin-right: 10px;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.filter-label {
+  flex: 1;
+  color: #333;
+}
+
+.item-count {
+  background: #e8e8e8;
+  color: #666;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  min-width: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Organ 섹션 특별 스타일 */
+.organ-section .filter-section-content {
+  background: transparent;
+  padding: 8px 0;
+  display: block;
+}
+
+.organ-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  margin: 0 0 6px;
+  background: white;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 17px;
+  color: #303030;
+  width: 100%;
+  max-width: 390px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.organ-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.organ-color-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.organ-name {
+  font-size: 17px;
+  color: #303030;
+  font-weight: 400;
+}
+
+.organ-count {
+  font-size: 17px;
+  color: #9a9a9a;
+  font-weight: 400;
+}
+
+.filter-input {
+  width: calc(100% - 32px);
+  margin: 8px 16px;
+  padding: 6px 8px;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  font-size: 13px;
+}
+
+.date-separator {
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  padding: 4px 0;
+  margin: 0 16px;
+}
+
+/* 사이드바 하단 액션 버튼들 - Figma 정확한 스타일 */
+.sidebar-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 30px;
+  background: #f5f5f5;
+  margin-top: auto;
+}
+
+.sidebar-bottom-left {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-icon {
+  width: 20px;
+  height: 20px;
+  color: #9a9a9a;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.sidebar-icon:hover {
+  color: #303030;
+}
+
+/* Organ 색상 점들 - Figma 정확한 색상 */
+.organ-blood { background-color: #ffbcbc; }
+.organ-heart { background-color: #ffbcbc; }
+.organ-bronchus { background-color: #ffe3bc; }
+.organ-lung { background-color: #ffe3bc; }
+.organ-brain { background-color: #dcedc5; }
+.organ-stomach { background-color: #c5e2ed; }
+.organ-small-intestine { background-color: #c5e2ed; }
+.organ-large-intestine { background-color: #c5e2ed; }
+.organ-bone { background-color: #d5c5ed; }
+.organ-knee { background-color: #d5c5ed; }
+
+/* 메인 컨텐츠 */
+.figma-content {
+  flex: 1;
+  background: white;
+  padding: 1.5rem;
+}
+
+/* 필터 바 - Figma 정확한 스타일 */
+.figma-filters-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.active-filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* Figma 정확한 필터 태그 색상 */
+.active-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 14px 8px 34px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Pretendard', sans-serif;
+  position: relative;
+  border: 1px solid;
+}
+
+/* Filter icon small dots */
+.filter-icon-small {
+  position: absolute;
+  left: 11px;
+  width: 12px;
+  height: 15px;
+  display: block;
+}
+
+/* Blood filter */
+.filter-blood {
+  background-color: #ffd7d7;
+  color: #c45353;
+  border-color: #c45353;
+}
+
+.filter-blood .filter-icon-small {
+  background-color: #ffbcbc;
+  border-radius: 2px;
+}
+
+/* Heart filter */
+.filter-heart {
+  background-color: #ffd7d7;
+  color: #c45353;
+  border-color: #c45353;
+}
+
+.filter-heart .filter-icon-small {
+  background-color: #ffbcbc;
+  border-radius: 2px;
+}
+
+/* Bronchus filter */
+.filter-bronchus {
+  background-color: #ffe3bc;
+  color: #cf933e;
+  border-color: #cf933e;
+}
+
+.filter-bronchus .filter-icon-small {
+  background-color: #ffe3bc;
+  border-radius: 2px;
+}
+
+/* Stomach filter - crossed out */
+.filter-stomach {
+  background-color: #c5e2ed;
+  color: #39acd7;
+  border-color: #39acd7;
+}
+
+.filter-stomach .filter-icon-small {
+  background-color: #c5e2ed;
+  border-radius: 2px;
+}
+
+/* Large Intestine filter - crossed out */
+.filter-large-intestine {
+  background-color: #c5e2ed;
+  color: #39acd7;
+  border-color: #39acd7;
+}
+
+.filter-large-intestine .filter-icon-small {
+  background-color: #c5e2ed;
+  border-radius: 2px;
+}
+
+/* Crossed out style */
+.crossed-out {
+  text-decoration: line-through;
+}
+
+/* Figma에서 추출한 정확한 색상들 */
+.active-filter-tag[style*="rgb(255, 107, 107)"], /* Blood - 빨간색 */
+.active-filter-tag[style*="#ff6b6b"] {
+  background-color: #ffebee;
+  color: #d32f2f;
+  border: 1px solid #ffcdd2;
+}
+
+.active-filter-tag[style*="rgb(233, 30, 99)"], /* Heart - 핑크색 */
+.active-filter-tag[style*="#e91e63"] {
+  background-color: #fce4ec;
+  color: #c2185b;
+  border: 1px solid #f8bbd9;
+}
+
+.active-filter-tag[style*="rgb(255, 152, 0)"], /* Bronchus - 주황색 */
+.active-filter-tag[style*="#ff9800"] {
+  background-color: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc99;
+}
+
+.active-filter-tag[style*="rgb(33, 150, 243)"], /* Stomach - 파란색 */
+.active-filter-tag[style*="#2196f3"] {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #90caf9;
+}
+
+.active-filter-tag[style*="rgb(76, 175, 80)"], /* Large Intestine - 초록색 */
+.active-filter-tag[style*="#4caf50"] {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.remove-filter-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 4px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.remove-filter-btn:hover {
+  opacity: 0.7;
+}
+
+.clear-filters-btn {
+  background: #f3f3f3;
+  border: 1px solid #e3e3e3;
+  color: #4d4d4d;
+  padding: 12px 24px;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+}
+
+.clear-filters-btn:hover {
+  background: #ebebeb;
+  border-color: #d0d0d0;
+}
+
+/* 테이블 컨테이너 - Figma 정확한 스타일 */
+.figma-table-container {
+  border-radius: 6px;
+  overflow: hidden;
+  background: white;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.table-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dataset-count-icon {
+  font-size: 14px;
+  color: #666;
+}
+
+.dataset-count-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  font-family: inherit;
+}
+
+.table-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.table-action-btn {
+  background: white;
+  border: 1px solid #d0d0d0;
+  padding: 4px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #666;
+  line-height: 1;
+}
+
+.table-action-btn:hover {
+  background: #f0f0f0;
+  border-color: #b0b0b0;
+}
+
+/* 테이블 - Figma 정확한 스타일 */
+.figma-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.figma-table th {
+  background: transparent;
+  padding: 12px 16px;
+  text-align: left;
+  border: none;
+  font-weight: 400;
+  color: #9a9a9a;
+  font-size: 16px;
+  font-family: 'Pretendard', sans-serif;
+  position: relative;
+}
+
+/* Table header cells with sorting */
+.table-header-cell {
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.table-header-cell.sortable {
+  color: #9a9a9a;
+}
+
+.table-header-cell.sorted {
+  color: #303030;
+}
+
+.table-header-cell .sort-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 13px;
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+.figma-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+  color: #333;
+  font-size: 13px;
+}
+
+.figma-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-row:hover {
+  background: #f8f9fa;
+  cursor: pointer;
+}
+
+.dataset-id {
+  color: #4f94d4;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.dataset-id:hover {
+  text-decoration: underline;
+}
+
+/* Figma 정확한 장기 태그 색상 */
+.organ-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid;
+  font-family: inherit;
+}
+
+/* 테이블 내 장기별 정확한 색상 - Figma 추출 */
+.organ-tag[style*="rgb(255, 107, 107)"], /* Blood */
+.organ-tag[style*="#ff6b6b"] {
+  background-color: #ffebee;
+  color: #d32f2f;
+  border-color: #ffcdd2;
+}
+
+.organ-tag[style*="rgb(233, 30, 99)"], /* Heart */
+.organ-tag[style*="#e91e63"] {
+  background-color: #fce4ec;
+  color: #c2185b;
+  border-color: #f8bbd9;
+}
+
+.organ-tag[style*="rgb(255, 152, 0)"], /* Bronchus */
+.organ-tag[style*="#ff9800"] {
+  background-color: #fff3e0;
+  color: #f57c00;
+  border-color: #ffcc99;
+}
+
+.organ-tag[style*="rgb(33, 150, 243)"], /* Stomach */
+.organ-tag[style*="#2196f3"] {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border-color: #90caf9;
+}
+
+.organ-tag[style*="rgb(76, 175, 80)"], /* Large Intestine */
+.organ-tag[style*="#4caf50"] {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border-color: #c8e6c9;
+}
+
+.status-badge {
+  background: #f0f0f0;
+  color: #666;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-family: inherit;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+  font-size: 14px;
+}
+
+.table-loading, .table-error {
+  padding: 40px 20px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+  .figma-main-container {
+    flex-direction: column;
+  }
+  
+  .figma-sidebar {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    max-height: 60vh;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+  }
+  
+  .figma-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .figma-content {
+    padding: 15px;
+  }
+  
+  .figma-sidebar {
+    max-height: 50vh;
+  }
+  
+  .sidebar-header-section {
+    padding: 20px;
+  }
+  
+  .figma-filters-bar {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .figma-table-container {
+    overflow-x: auto;
+  }
+  
+  .figma-table {
+    min-width: 800px;
+  }
+  
+  .figma-table th,
+  .figma-table td {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .active-filter-tags {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .active-filter-tag {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

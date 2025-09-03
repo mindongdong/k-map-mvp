@@ -228,5 +228,5 @@ static/uploads/
 *.zip
 
 CLAUDE.md
-src/
+# src/
 에러.txt
