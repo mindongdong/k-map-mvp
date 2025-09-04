@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState } from 'react';
+import Sidebar from '../components/Layout/Sidebar';
+import Navigation from '../components/Visualization/Navigation';
+function VisualizationPage() {
+  const [selectedOptions, setSelectedOptions] = useState({
+    multiGene: true,
+    tissue: true,
+    cellType: false,
+    umap: false,
+    umap1: false,
+    umapFeature: false
+  });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
-const VisualizationPage: React.FC = () => {
-  return (
-    <div className="container">
-      <h1>Data Visualization</h1>
-      <p>Visualization page will be implemented here.</p>
+    return (
+    <div style={{ height: '100vh', display: 'flex' }}>
+      <Sidebar
+        selectedOptions={selectedOptions}
+        setSelectedOptions={setSelectedOptions}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        sidebarCollapsed={sidebarCollapsed}
+        setSidebarCollapsed={setSidebarCollapsed}
+      />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: '#ffffff' }}>
+        <Navigation selectedOptions={selectedOptions} />
+      </div>
     </div>
   );
-};
+}
 
 export default VisualizationPage;

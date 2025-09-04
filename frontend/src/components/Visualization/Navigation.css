@@ -1,0 +1,28 @@
+.header {
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0px 40px;
+  margin-top: 25px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.breadcrumb-item {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  color: #9a9a9a;
+}
+
+.breadcrumb-separator {
+  width: 24px;
+  height: 24px;
+  opacity: 0.3;
+  object-fit: contain;
+}
