@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.api import datasets, admin, visualizations
+from app.api import datasets, admin, visualizations, sc_visualizations, sc_admin
 from app.core.database import SessionLocal, engine, Base
 from app.models.user import User
 from app.models.dataset import Dataset
@@ -104,6 +104,10 @@ app.add_middleware(
 app.include_router(datasets.router, prefix=f"{settings.API_V1_STR}/datasets", tags=["Datasets"])
 app.include_router(admin.router, prefix=f"{settings.API_V1_STR}/admin", tags=["Admin"])
 app.include_router(visualizations.router, prefix=f"{settings.API_V1_STR}/visualizations", tags=["Visualizations"])
+
+# Single-cell visualization routers
+app.include_router(sc_visualizations.router, prefix=f"{settings.API_V1_STR}/sc", tags=["Single Cell"])
+app.include_router(sc_admin.router, prefix=f"{settings.API_V1_STR}/sc/admin", tags=["SC Admin"])
 
 @app.get("/")
 async def root():
