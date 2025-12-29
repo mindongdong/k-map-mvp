@@ -230,3 +230,7 @@ static/uploads/
 CLAUDE.md
 # src/
 에러.txt
+
+# Single-cell data dumps (large files)
+backend/scripts/sc_data_dump.sql
+backend/scripts/sc_data_converted.sql

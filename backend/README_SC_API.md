@@ -214,3 +214,78 @@ python scripts/migrate_sc_data.py
 - `gene_expression` 데이터 복사 (있는 경우)
 - ID 매핑 처리 (외래 키 관계 유지)
 - Materialized View 자동 갱신
+
+---
+
+## SQL 덤프 파일 복원
+
+이미 덤프 파일이 있는 경우 직접 복원할 수 있습니다.
+
+### 생성된 파일
+
+| 파일 | 설명 |
+|------|------|
+| `scripts/sc_data_dump.sql` | optimization_v2 원본 덤프 |
+| `scripts/sc_data_converted.sql` | 테이블명 변환된 덤프 (sc_datasets) |
+| `scripts/restore_sc_data.py` | 복원 스크립트 |
+
+### 복원 방법
+
+#### 방법 1: Python 스크립트 사용
+
+```bash
+# 1. k-map-mvp 테이블 생성
+cd backend
+alembic upgrade head
+
+# 2. 환경변수 설정
+export TARGET_DB_PASSWORD=<password>
+
+# 3. 복원 실행
+python scripts/restore_sc_data.py \
+  --target-host localhost \
+  --target-port 5432 \
+  --target-db kmap \
+  --target-user kmap
+```
+
+#### 방법 2: Docker 컨테이너로 직접 복원
+
+```bash
+# 1. k-map-mvp Docker 시작
+cd c:/Projects/k-map-mvp
+docker-compose up -d postgres
+
+# 2. 마이그레이션 실행
+cd backend
+alembic upgrade head
+
+# 3. 덤프 파일 복사 및 복원
+docker cp scripts/sc_data_converted.sql kmap-postgres:/tmp/
+docker exec -it kmap-postgres psql -U kmap -d kmap -f /tmp/sc_data_converted.sql
+
+# 4. Materialized View 갱신
+docker exec -it kmap-postgres psql -U kmap -d kmap -c \
+  "REFRESH MATERIALIZED VIEW umap_view;"
+```
+
+### 복원 스크립트 옵션
+
+```bash
+python scripts/restore_sc_data.py --help
+
+# 옵션:
+#   --input          입력 덤프 파일 (기본: sc_data_dump.sql)
+#   --convert-only   변환만 실행, 복원 안함
+#   --target-host    타겟 PostgreSQL 호스트 (기본: localhost)
+#   --target-port    타겟 PostgreSQL 포트 (기본: 5432)
+#   --target-db      타겟 데이터베이스 이름 (기본: kmap)
+#   --target-user    타겟 데이터베이스 사용자 (기본: kmap)
+```
+
+### 데이터 용량
+
+현재 덤프 파일 통계:
+- 파일 크기: 약 54만 줄
+- 포함 데이터셋: 10개 (pbmc3k, CRCtotal, breast_20_c 등)
+- 총 세포 수: 약 50만 개
