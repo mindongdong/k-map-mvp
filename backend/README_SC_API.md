@@ -170,3 +170,47 @@ tqdm>=4.65.0
 ```bash
 POST /api/v1/sc/admin/refresh-view
 ```
+
+---
+
+## 데이터 마이그레이션
+
+기존 `optimization_v2` PostgreSQL에서 데이터를 마이그레이션하는 방법입니다.
+
+### 사전 조건
+
+1. k-map-mvp Docker 컨테이너 실행 중
+2. optimization_v2 Docker 컨테이너 실행 중 (또는 DB 접근 가능)
+
+### 마이그레이션 실행
+
+```bash
+# 1. 테이블 생성 (최초 1회)
+cd backend
+alembic upgrade head
+
+# 2. 환경변수 설정
+export SOURCE_DB_PASSWORD=<optimization_v2_db_password>
+
+# 3. 마이그레이션 스크립트 실행
+python scripts/migrate_sc_data.py
+```
+
+### 환경변수
+
+| 변수 | 기본값 | 설명 |
+|------|--------|------|
+| `SOURCE_DB_HOST` | localhost | 소스 DB 호스트 |
+| `SOURCE_DB_PORT` | 5432 | 소스 DB 포트 |
+| `SOURCE_DB_NAME` | kmap_visualization | 소스 DB 이름 |
+| `SOURCE_DB_USER` | kmap | 소스 DB 사용자 |
+| `SOURCE_DB_PASSWORD` | (필수) | 소스 DB 비밀번호 |
+
+### 마이그레이션 내용
+
+스크립트가 자동으로 처리하는 항목:
+- `datasets` → `sc_datasets` 테이블명 변환
+- `cells`, `genes`, `marker_genes`, `cluster_stats` 데이터 복사
+- `gene_expression` 데이터 복사 (있는 경우)
+- ID 매핑 처리 (외래 키 관계 유지)
+- Materialized View 자동 갱신

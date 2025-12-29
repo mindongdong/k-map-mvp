@@ -10,8 +10,8 @@ Environment variables (source DB - optimization_v2):
     SOURCE_DB_HOST: Source database host (default: localhost)
     SOURCE_DB_PORT: Source database port (default: 5432)
     SOURCE_DB_NAME: Source database name (default: kmap_visualization)
-    SOURCE_DB_USER: Source database user (default: postgres)
-    SOURCE_DB_PASSWORD: Source database password
+    SOURCE_DB_USER: Source database user (default: kmap)
+    SOURCE_DB_PASSWORD: Source database password (from optimization_v2/.env)
 """
 
 import os
@@ -37,7 +37,7 @@ class DataMigrator:
             'host': os.getenv('SOURCE_DB_HOST', 'localhost'),
             'port': int(os.getenv('SOURCE_DB_PORT', '5432')),
             'database': os.getenv('SOURCE_DB_NAME', 'kmap_visualization'),
-            'user': os.getenv('SOURCE_DB_USER', 'postgres'),
+            'user': os.getenv('SOURCE_DB_USER', 'kmap'),
             'password': os.getenv('SOURCE_DB_PASSWORD', ''),
         }
 
