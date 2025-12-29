@@ -42,7 +42,7 @@ class Cell(Base):
     umap_2 = Column(Float, nullable=False)
     cluster_id = Column(String(50))
     cell_type = Column(String(100))
-    metadata = Column(JSONB)
+    cell_metadata = Column("metadata", JSONB)
 
     # Relationships
     dataset = relationship("SCDataset", back_populates="cells")
