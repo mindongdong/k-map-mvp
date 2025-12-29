@@ -7,6 +7,8 @@ const UMAPPlot = ({ datasetName, expressionData }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [loadTime, setLoadTime] = useState(null);
+  const [networkTime, setNetworkTime] = useState(null);
+  const [totalTime, setTotalTime] = useState(null);
 
   useEffect(() => {
     if (!datasetName) return;
@@ -16,8 +18,17 @@ const UMAPPlot = ({ datasetName, expressionData }) => {
         setLoading(true);
         setError(null);
         setLoadTime(null);
+        setNetworkTime(null);
+        setTotalTime(null);
+
+        const startTime = performance.now();
         const response = await getUmapData(datasetName, null, null); // Fetch all data points
+        const endTime = performance.now();
         const data = response.data;
+
+        const totalMs = Math.round(endTime - startTime);
+        const queryMs = data.query_duration_ms || 0;
+        const networkMs = totalMs - queryMs;
         
         // Manually convert cluster_id strings to numbers for categorical coloring
         const uniqueClusters = [...new Set(data.cells.map(c => c.cluster_id))];
@@ -53,7 +64,9 @@ const UMAPPlot = ({ datasetName, expressionData }) => {
         };
         
         setPlotData([trace]);
-        setLoadTime(data.query_duration_ms);
+        setLoadTime(queryMs);
+        setNetworkTime(networkMs);
+        setTotalTime(totalMs);
 
       } catch (err) {
         setError('Failed to fetch UMAP data.');
@@ -95,9 +108,9 @@ const UMAPPlot = ({ datasetName, expressionData }) => {
 
   return (
     <>
-      {loadTime != null && (
+      {totalTime != null && (
         <p className="text-muted text-center" style={{ fontSize: '0.9em' }}>
-          Data loaded in {loadTime} ms
+          DB Query: {loadTime} ms | Network: {networkTime} ms | Total: {totalTime} ms
         </p>
       )}
       <Plot
