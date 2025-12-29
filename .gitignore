@@ -234,3 +234,6 @@ CLAUDE.md
 # Single-cell data dumps - tracked for backup
 # backend/scripts/sc_data_dump.sql
 # backend/scripts/sc_data_converted.sql
+
+# SC test frontend node_modules
+backend/sc_test_frontend/node_modules/
