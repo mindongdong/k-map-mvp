@@ -3,8 +3,6 @@ name: AI Code Review
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
-  issue_comment:
-    types: [created]
 
 permissions:
   contents: read
@@ -13,10 +11,7 @@ permissions:
 
 jobs:
   code-review:
-    # PR 이벤트이거나, PR 코멘트에서 @ai-review 멘션한 경우 실행
-    if: |
-      (github.event_name == 'pull_request' && !github.event.pull_request.draft) ||
-      (github.event_name == 'issue_comment' && github.event.issue.pull_request && contains(github.event.comment.body, '@ai-review'))
+    if: github.event_name == 'pull_request' && !github.event.pull_request.draft
     runs-on: ubuntu-latest
 
     steps:
@@ -39,12 +34,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "${{ github.event_name }}" == "pull_request" ]; then
-            PR_NUMBER=${{ github.event.pull_request.number }}
-          else
-            PR_NUMBER=${{ github.event.issue.number }}
-          fi
-
+          PR_NUMBER=${{ github.event.pull_request.number }}
           gh pr diff $PR_NUMBER > pr_diff.txt
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
 
