@@ -64,3 +64,21 @@ export function formatRelativeTime(date: string | Date): string {
   if (minutes > 0) return `${minutes}분 전`;
   return "방금 전";
 }
+
+/**
+ * 퍼센트 포맷팅
+ */
+export function formatPercent(value: number, decimals: number = 1): string {
+  return `${(value * 100).toFixed(decimals)}%`;
+}
+
+/**
+ * 유전자 발현값 포맷팅 (과학적 표기법)
+ */
+export function formatExpression(value: number): string {
+  if (value === 0) return "0";
+  if (value < 0.001 || value >= 10000) {
+    return value.toExponential(2);
+  }
+  return value.toFixed(3);
+}
