@@ -1,0 +1,55 @@
+# AI Code Review 설정 - K-MAP Project
+
+# 리뷰 언어 (ko: 한국어, en: 영어)
+language: ko
+
+# 리뷰 스타일 (friendly: 친근함, strict: 엄격함)
+review_style: friendly
+
+# 중점 리뷰 영역
+focus_areas:
+  - logic        # 코드 로직, 버그 가능성
+  - security     # 보안 취약점
+  - performance  # 성능 이슈
+  - naming       # 네이밍 컨벤션
+  - duplication  # 코드 중복
+
+# 리뷰 제외 파일 패턴
+ignore_patterns:
+  - "*.lock"
+  - "*.min.js"
+  - "*.min.css"
+  - "package-lock.json"
+  - "yarn.lock"
+  - "*.generated.*"
+  - "dist/*"
+  - "build/*"
+  - "node_modules/*"
+  - "__pycache__/*"
+  - "*.pyc"
+  - ".venv/*"
+  - "venv/*"
+
+# 최대 리뷰 파일 수 (너무 큰 PR 방지)
+max_files: 20
+
+# K-MAP 프로젝트 규칙
+custom_instructions: |
+  ## K-MAP 프로젝트 컨벤션
+
+  ### Frontend (React.js)
+  - React 컴포넌트는 함수형으로 작성
+  - API 호출은 커스텀 훅으로 분리
+  - Plotly.js 차트 컴포넌트는 별도 파일로 분리
+  - 컴포넌트 파일명은 PascalCase 사용
+
+  ### Backend (FastAPI)
+  - FastAPI 엔드포인트는 async 함수 사용
+  - Pydantic 모델로 요청/응답 스키마 정의
+  - API 라우터는 도메인별로 분리
+  - SQL 쿼리 시 SQLAlchemy ORM 권장
+
+  ### 공통
+  - 커밋 메시지는 Conventional Commits 형식 사용
+  - 환경변수는 .env 파일로 관리 (커밋 금지)
+  - 타입 힌트 적극 사용 (Python, TypeScript)
